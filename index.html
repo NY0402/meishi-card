@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中井 雄一 ｜ 電子名刺</title>
+<meta name="description" content="中井 雄一（Nakai Yuichi）｜ FDE / 法人様・個人様向け AI導入支援サービス。AI導入の入口から定着までをオーダーメードで伴走支援します。">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="中井 雄一 ｜ 電子名刺">
+<meta property="og:description" content="FDE / 法人様・個人様向け AI導入支援サービス">
+<meta property="og:type" content="profile">
+<style>
+  :root {
+    --page-bg: #E7E5D8;
+    --page-bg-2: #DEDCCB;
+    --page-ink: #2A3128;
+    --card-1: #17402F;
+    --card-2: #1E5642;
+    --card-3: #0F2C20;
+    --cream: #F0EEE1;
+    --cream-dim: #C7CDBE;
+    --sage: #9BD1A9;
+    --gold: #D9B14E;
+    --teal: var(--sage);
+    --line: rgba(240, 238, 225, 0.16);
+    --line-strong: rgba(240, 238, 225, 0.30);
+    --serif: Georgia, "Times New Roman", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    --gothic: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", Meiryo, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root { --page-bg: #0E1310; --page-bg-2: #131A15; --page-ink: #C9CFC3; } }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100dvh; display: grid; place-items: center; padding: 32px 18px;
+    font-family: var(--gothic); color: var(--page-ink);
+    background: radial-gradient(1200px 700px at 15% -10%, var(--page-bg-2), transparent 60%), var(--page-bg);
+  }
+
+  .card {
+    position: relative; width: 100%; max-width: 420px; border-radius: 22px; overflow: hidden; color: var(--cream);
+    background: radial-gradient(700px 380px at 100% 0%, var(--card-2), transparent 62%), linear-gradient(158deg, var(--card-1) 0%, var(--card-3) 100%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset, 0 24px 60px -22px rgba(8,26,18,0.75), 0 4px 14px -6px rgba(8,26,18,0.5);
+    animation: rise 720ms cubic-bezier(.2,.7,.2,1) both;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  .circuit { position: absolute; top: -20px; right: -20px; width: 210px; height: 210px; color: var(--teal); opacity: 0.20; pointer-events: none; }
+  .grain { position: absolute; inset: 0; opacity: 0.05; pointer-events: none; mix-blend-mode: overlay; }
+
+  .inner { position: relative; padding: 30px 28px 26px; }
+  .top { display: flex; align-items: center; gap: 16px; }
+  .mono {
+    flex: 0 0 auto; width: 60px; height: 60px; display: grid; place-items: center; border-radius: 16px;
+    border: 1px solid var(--line-strong);
+    background: radial-gradient(circle at 30% 25%, rgba(217,177,78,0.28), transparent 70%);
+    font-family: var(--serif); font-size: 22px; letter-spacing: 0.06em; color: var(--gold);
+  }
+  .eyebrow { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--teal); margin: 0 0 7px; }
+  .furigana { font-size: 11px; letter-spacing: 0.34em; color: var(--cream-dim); margin: 0 0 2px; }
+  .fg-gap { display: inline-block; width: 2em; }
+  .name { font-family: var(--serif); font-size: 30px; line-height: 1.05; margin: 0; letter-spacing: 0.01em; text-wrap: balance; }
+  .name .en { display: block; font-size: 12px; letter-spacing: 0.24em; color: var(--cream-dim); margin-top: 8px; text-transform: uppercase; font-family: var(--gothic); }
+
+  .role { margin: 20px 0 0; }
+  .role .title { font-size: 14.5px; font-weight: 600; margin: 0; }
+  .role .title-full { font-weight: 400; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-left: 8px; }
+  .role .org { font-size: 12.5px; color: var(--cream-dim); margin: 4px 0 0; }
+
+  .catch { font-family: var(--serif); font-size: 17px; line-height: 1.5; margin: 22px 0 0; padding-left: 15px; border-left: 2px solid var(--gold); text-wrap: pretty; }
+  .bio { font-size: 12.5px; line-height: 1.75; color: var(--cream-dim); margin: 14px 0 0; text-wrap: pretty; }
+
+  .rule { height: 1px; background: var(--line); margin: 24px 0; position: relative; }
+  .rule span { position: absolute; top: -7px; left: 0; font-size: 9.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--teal); }
+
+  .contact { display: grid; gap: 0; margin-top: 4px; }
+  .row { display: flex; align-items: center; gap: 11px; padding: 5px 8px; margin: 0 -8px; border-radius: 9px; color: var(--cream); text-decoration: none; transition: background 160ms ease, transform 160ms ease; }
+  a.row:hover { background: rgba(240,238,225,0.07); transform: translateX(2px); }
+  a.row:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  .ico { flex: 0 0 auto; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 7px; border: 1px solid var(--line); color: var(--teal); }
+  .ico svg { width: 14px; height: 14px; }
+  .rval { font-size: 12.5px; margin: 0; word-break: break-all; }
+
+  .lineup { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  .lineup li { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--cream); line-height: 1.35; }
+  .lineup li::before { content: "\25B6"; flex: 0 0 auto; color: var(--teal); font-size: 10px; line-height: 1; }
+  @media (max-width: 380px) { .lineup { grid-template-columns: 1fr; } }
+  .foot { margin-top: 22px; font-size: 10px; letter-spacing: 0.14em; color: var(--cream-dim); opacity: 0.7; }
+  @media (prefers-reduced-motion: reduce) { .card { animation: none; } a.row { transition: none; } }
+</style>
+</head>
+<body>
+<main class="card">
+  <svg class="circuit" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+    <g stroke-linecap="round">
+      <path d="M120 10 V50 H160"/><path d="M160 50 V90"/>
+      <path d="M90 30 V70 H130"/><path d="M150 110 H190"/>
+      <path d="M110 90 V130 H70"/><path d="M170 140 V180"/>
+    </g>
+    <g fill="currentColor">
+      <circle cx="120" cy="10" r="3"/><circle cx="160" cy="90" r="3"/>
+      <circle cx="90" cy="30" r="3"/><circle cx="190" cy="110" r="3"/>
+      <circle cx="70" cy="130" r="3"/><circle cx="170" cy="180" r="3"/>
+      <circle cx="130" cy="70" r="3"/>
+    </g>
+  </svg>
+
+  <div class="inner">
+    <div class="top">
+      <div class="mono" aria-hidden="true">NY</div>
+      <div>
+        <p class="eyebrow">Digital Card</p>
+        <p class="furigana">なかい<span class="fg-gap"></span>ゆういち</p>
+        <h1 class="name">中井 雄一<span class="en">Nakai Yuichi</span></h1>
+      </div>
+    </div>
+
+    <div class="role">
+      <p class="title">FDE <span class="title-full">Forward Deployed Engineer</span></p>
+      <p class="org">法人様・個人様向け AI導入支援サービス</p>
+    </div>
+
+    <p class="catch">現場に、AIを「使える形」で届ける。</p>
+    <p class="bio">法人様・個人様を問わず、AI導入の入口から定着までを伴走支援。<br>「まず小さく、確実に成果へ」をモットーに、それぞれの業務に馴染む<br>自動化をオーダーメードで組み立てます。</p>
+
+    <div class="rule"><span>AI Lineup</span></div>
+    <ul class="lineup">
+      <li>最強の社長秘書AI</li>
+      <li>SNSマーケターAI</li>
+      <li>WebデザイナーAI</li>
+      <li>セキュリティ担当AI</li>
+      <li>カスタマーサポートAI</li>
+      <li>経理AI</li>
+      <li>リサーチャーAI</li>
+      <li>システムエンジニアAI</li>
+      <li>新規事業AI</li>
+      <li>法務コンプライアンスAI</li>
+    </ul>
+
+    <div class="rule"><span>Contact</span></div>
+    <nav class="contact" aria-label="連絡先">
+      <a class="row" href="mailto:yuichinakai0402@gmail.com">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <span><span class="rval">yuichinakai0402@gmail.com</span></span>
+      </a>
+    </nav>
+
+    <p class="foot">TAP TO CONNECT ・ 中井 雄一</p>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var host = document.querySelector('.card');
+    if (!host) return;
+    var c = document.createElement('canvas'); c.className = 'grain';
+    var w = 220, h = 300; c.width = w; c.height = h;
+    var ctx = c.getContext('2d'); var img = ctx.createImageData(w, h);
+    var seed = 20260711;
+    function rnd() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+    for (var i = 0; i < img.data.length; i += 4) { var v = 235 + Math.floor(rnd() * 20); img.data[i]=img.data[i+1]=img.data[i+2]=v; img.data[i+3]=255; }
+    ctx.putImageData(img, 0, 0); host.appendChild(c);
+  })();
+</script>
+</body>
+</html>
